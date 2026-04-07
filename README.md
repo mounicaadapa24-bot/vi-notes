@@ -1,8 +1,8 @@
 # VI Notes
 
-This is my contribution 
+VI Notes is a Vite + React + TypeScript app for real-time writing analysis.
 
-VI Notes is a Vite + React + TypeScript app for writing analysis and session tracking.
+The app has two screens: a **landing** page (`/landing`) and the **editor** with analytics (`/editor`). There is no login or account flow; open the editor from the landing page.
 
 ## Run In VS Code
 
@@ -29,6 +29,23 @@ Open: [http://localhost:8080](http://localhost:8080)
 - `npm run lint` - run ESLint
 - `npm run build` - production build
 - `npm run check` - lint + test + build
+
+## Deploy
+
+### Build locally
+```bash
+npm ci
+npm run build
+```
+
+The production build is output to `dist/`.
+
+### Vercel / Netlify
+- **Build command**: `npm run build`
+- **Output directory**: `dist`
+
+### Static hosting (any)
+Deploy the `dist/` folder.
 
 ## VS Code setup included
 - Recommended extensions in `.vscode/extensions.json`

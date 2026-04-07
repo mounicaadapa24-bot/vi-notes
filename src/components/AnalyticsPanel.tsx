@@ -3,7 +3,7 @@ import AnalyticsCard, { StatRow } from "./AnalyticsCard";
 import SuspiciousActivity from "./SuspiciousActivity";
 import ExplanationPanel from "./ExplanationPanel";
 import type { AnalyticsData } from "@/hooks/useWritingAnalytics";
-import { Keyboard, Clock, Clipboard, PenTool, BookOpen, Timer } from "lucide-react";
+import { Keyboard, Clock, Clipboard, PenTool, Timer } from "lucide-react";
 
 interface AnalyticsPanelProps {
   analytics: AnalyticsData;
@@ -39,11 +39,6 @@ const AnalyticsPanel = ({ analytics }: AnalyticsPanelProps) => {
         <AnalyticsCard title="Edits" icon={<PenTool className="w-4 h-4" />}>
           <StatRow label="Count" value={analytics.editCount} />
           <StatRow label="Ratio" value={analytics.editRatio} />
-        </AnalyticsCard>
-
-        <AnalyticsCard title="Diversity" icon={<BookOpen className="w-4 h-4" />}>
-          <StatRow label="Unique %" value={`${analytics.wordDiversity}%`} />
-          <StatRow label="Sent. var" value={analytics.sentenceLengthVariation} />
         </AnalyticsCard>
 
         <AnalyticsCard title="Session" icon={<Timer className="w-4 h-4" />}>

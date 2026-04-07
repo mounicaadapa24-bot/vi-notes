@@ -93,8 +93,6 @@ export function exportReportPDF(analytics: AnalyticsData, text: string) {
   statRow("Character Count", analytics.charCount);
   statRow("Sentences", analytics.sentenceCount);
   statRow("Paragraphs", analytics.paragraphCount);
-  statRow("Word Diversity", `${analytics.wordDiversity}%`);
-  statRow("Sentence Length Var.", analytics.sentenceLengthVariation);
   statRow("Session Duration", `${Math.floor(analytics.sessionDuration / 60)}m ${analytics.sessionDuration % 60}s`);
   y += 4;
 

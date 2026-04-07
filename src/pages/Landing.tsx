@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Shield, Zap, Eye, BarChart3, Lock, Sparkles, ArrowRight, CheckCircle2, Sun, Moon } from "lucide-react";
+import { Shield, Zap, Eye, BarChart3, Lock, Sparkles, CheckCircle2, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
@@ -17,7 +17,7 @@ const features = [
   {
     icon: BarChart3,
     title: "Deep Analytics",
-    description: "Detailed breakdowns of WPM, pause patterns, paste detection, and vocabulary diversity.",
+    description: "Detailed breakdowns of WPM, pause patterns, and paste detection.",
   },
   {
     icon: Lock,
@@ -62,12 +62,8 @@ const Landing = () => {
             >
               {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
-            <Button variant="ghost" onClick={() => navigate("/login")}>
-              Log in
-            </Button>
-            <Button onClick={() => navigate("/register")} className="rounded-xl">
-              Get Started
-              <ArrowRight className="w-4 h-4 ml-1" />
+            <Button variant="ghost" onClick={() => navigate("/editor")}>
+              Open Editor
             </Button>
           </div>
         </div>
@@ -90,12 +86,8 @@ const Landing = () => {
             Vi Notes analyzes typing behavior, rhythm patterns, and text characteristics in real time to determine content authenticity — no AI models required.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" onClick={() => navigate("/register")} className="rounded-xl text-base px-8 h-12">
-              Start Writing Free
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-            <Button size="lg" variant="outline" onClick={() => navigate("/login")} className="rounded-xl text-base px-8 h-12">
-              Sign In
+            <Button size="lg" onClick={() => navigate("/editor")} className="rounded-xl text-base px-8 h-12">
+              Start Writing
             </Button>
           </div>
         </div>
@@ -147,13 +139,8 @@ const Landing = () => {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
             Ready to detect AI writing?
           </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">
-            Create your free account and start analyzing content authenticity in seconds.
-          </p>
-          <Button size="lg" onClick={() => navigate("/register")} className="rounded-xl text-base px-8 h-12">
-            Get Started Now
-            <ArrowRight className="w-4 h-4 ml-1" />
-          </Button>
+          <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">Open the editor and start analyzing content authenticity in seconds.</p>
+          <Button size="lg" onClick={() => navigate("/editor")} className="rounded-xl text-base px-8 h-12">Go to Editor</Button>
         </div>
       </section>
 

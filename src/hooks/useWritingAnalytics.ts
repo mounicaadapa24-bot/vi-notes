@@ -28,8 +28,6 @@ export interface AnalyticsData {
   charCount: number;
   sentenceCount: number;
   paragraphCount: number;
-  wordDiversity: number;
-  sentenceLengthVariation: number;
   sessionDuration: number;
   score: number;
   scoreLabel: "human" | "uncertain" | "ai";
@@ -52,8 +50,6 @@ const initialAnalytics: AnalyticsData = {
   charCount: 0,
   sentenceCount: 0,
   paragraphCount: 0,
-  wordDiversity: 0,
-  sentenceLengthVariation: 0,
   sessionDuration: 0,
   score: 50,
   scoreLabel: "uncertain",
@@ -88,16 +84,6 @@ export function useWritingAnalytics() {
     const paragraphs = currentText.split(/\n\s*\n/).filter((p) => p.trim().length > 0);
     const paragraphCount = Math.max(paragraphs.length, currentText.trim() ? 1 : 0);
 
-    const uniqueWords = new Set(words.map((w) => w.toLowerCase().replace(/[^a-z]/g, "")));
-    const wordDiversity = wordCount > 0 ? (uniqueWords.size / wordCount) * 100 : 0;
-
-    const sentenceLengths = sentences.map((s) => s.trim().split(/\s+/).length);
-    let sentenceLengthVariation = 0;
-    if (sentenceLengths.length > 1) {
-      const mean = sentenceLengths.reduce((a, b) => a + b, 0) / sentenceLengths.length;
-      const variance = sentenceLengths.reduce((a, b) => a + (b - mean) ** 2, 0) / sentenceLengths.length;
-      sentenceLengthVariation = Math.sqrt(variance);
-    }
 
     const times = keystrokeTimes.current;
     const intervals: number[] = [];
@@ -199,24 +185,6 @@ export function useWritingAnalytics() {
       }
     }
 
-    if (sentenceCount > 3) {
-      if (sentenceLengthVariation > 4) {
-        score += 5;
-        explanations.push("Good sentence length variation");
-      } else if (sentenceLengthVariation < 2) {
-        score -= 5;
-        explanations.push("Uniform sentence lengths — common in AI text");
-      }
-    }
-
-    if (wordDiversity > 60) {
-      score += 5;
-      explanations.push("High word diversity");
-    } else if (wordDiversity < 40 && wordCount > 20) {
-      score -= 5;
-      explanations.push("Low word diversity");
-    }
-
     score = Math.max(0, Math.min(100, score));
     const scoreLabel: "human" | "uncertain" | "ai" = score >= 70 ? "human" : score >= 40 ? "uncertain" : "ai";
 
@@ -240,8 +208,6 @@ export function useWritingAnalytics() {
       charCount,
       sentenceCount,
       paragraphCount,
-      wordDiversity: Math.round(wordDiversity),
-      sentenceLengthVariation: Math.round(sentenceLengthVariation * 10) / 10,
       sessionDuration: Math.round(sessionDuration),
       score,
       scoreLabel,
