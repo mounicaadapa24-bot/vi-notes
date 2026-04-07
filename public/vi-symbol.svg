@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="card" x1="56" y1="56" x2="456" y2="456" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#312E81"/>
+      <stop offset="0.5" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="154" y1="156" x2="362" y2="368" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white"/>
+      <stop offset="1" stop-color="#D1FAFF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(370 142) rotate(90) scale(78)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="40" y="40" width="432" height="432" rx="112" fill="url(#card)"/>
+  <rect x="82" y="82" width="348" height="348" rx="72" fill="white" fill-opacity="0.08"/>
+  <circle cx="370" cy="142" r="78" fill="url(#glow)"/>
+
+  <path d="M150 174L208 352H256L314 174H270L232 305L193 174H150Z" fill="url(#accent)"/>
+  <rect x="336" y="174" width="34" height="178" rx="17" fill="url(#accent)"/>
+
+  <path d="M322 128H360L404 172V318C404 338 388 354 368 354H318C298 354 282 338 282 318V168C282 146 300 128 322 128Z" fill="white" fill-opacity="0.11"/>
+  <path d="M360 128V158C360 166.8 367.2 174 376 174H404L360 128Z" fill="white" fill-opacity="0.25"/>
+</svg>
