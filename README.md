@@ -1,5 +1,7 @@
 # VI Notes
 
+This is my contribution 
+
 VI Notes is a Vite + React + TypeScript app for writing analysis and session tracking.
 
 ## Run In VS Code
